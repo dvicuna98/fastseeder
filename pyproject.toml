@@ -1,0 +1,34 @@
+[project]
+name = "fastseeder"
+version = "0.1.0"
+description = "Esay way to create and run seeds in your projects"
+authors = [
+    { name = "Diego Vicuna", email = "diegojeanpierre98@hotmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "typer",
+    "sqlalchemy",
+    "python-slugify",
+    "python-dotenv"
+]
+license = "MIT"
+
+[project.optional-dependencies]
+gcs = ["google-cloud-secret-manager"]
+aws = ["boto3"]
+test = ["pytest", "pytest-mock"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+fastseeder = "fastseeder.runner:main"

@@ -1,0 +1,7 @@
+try:
+    from .aws import aws_secret_resolver
+    from fastseeder.db import register_uri_resolver
+    register_uri_resolver(aws_secret_resolver)
+except ImportError:
+    print("aws_secret_resolver not found, using default")
+    pass  # GCS connector not installed, skip registration
